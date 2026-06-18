@@ -1,0 +1,21 @@
+# Binaries
+bin/
+gcraft
+*.exe
+*.out
+
+# Build artifacts
+dist/
+
+# Go test cache
+*.test
+*.prof
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
