@@ -124,7 +124,7 @@ type User struct { ... }
 
 ## What's next
 
-This is v0.1.0. Known gaps I'm working on:
+This is v0.1.1. Known gaps I'm working on:
 - Embedded struct fields
 - Generic types
 - Custom validation rules beyond "string is not empty"

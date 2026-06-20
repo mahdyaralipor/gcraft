@@ -39,7 +39,7 @@ All output goes through `gofmt`, zero dependencies (stdlib only).
 
 Most generators I found either need a config file, only do one thing (mocks OR builders, not both), or pull in heavy dependencies. gcraft is a single binary, works with `//go:generate` out of the box, and does all four in one pass.
 
-It's early (v0.1.0) — I'd genuinely appreciate feedback on the API, edge cases I'm missing, or features you'd actually want. Source + examples here:
+It's early (v0.1.1) — I'd genuinely appreciate feedback on the API, edge cases I'm missing, or features you'd actually want. Source + examples here:
 
 👉 https://github.com/Mahdyaralipor/gcraft
 

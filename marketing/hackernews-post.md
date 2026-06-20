@@ -21,7 +21,7 @@ A few design decisions I'd love feedback on:
 - Generated code lives in `<type>_gen.go`, designed to work with `//go:generate`
 - Mocks use a `FuncField` + `CalledCount` pattern rather than a full mocking framework — simpler, no extra assertions library needed
 
-It's v0.1.0, so there are rough edges — embedded structs and generics aren't fully supported yet. Happy to answer questions or hear what you'd want from a tool like this.
+It's v0.1.1, so there are rough edges — embedded structs and generics aren't fully supported yet. Happy to answer questions or hear what you'd want from a tool like this.
 
 ---
 

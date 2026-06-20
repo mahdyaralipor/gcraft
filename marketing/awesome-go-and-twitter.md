@@ -64,7 +64,7 @@ All gofmt-clean, zero runtime deps.
 
 **Tweet 3:**
 ```
-v0.1.0 is out — early days, feedback very welcome.
+v0.1.1 is out — early days, feedback very welcome.
 
 go install github.com/Mahdyaralipor/gcraft/cmd/gcraft@latest
 
