@@ -1,4 +1,4 @@
-package main
+package models
 
 // User is a sample struct to demonstrate gcraft generation.
 //
