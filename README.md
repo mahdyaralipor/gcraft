@@ -1,5 +1,6 @@
 # gcraft
 
+[![Docs](https://img.shields.io/badge/docs-mahdyaralipor.github.io-blue)](https://mahdyaralipor.github.io/gcraft-docs/)
 [![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://go.dev)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Mahdyaralipor/gcraft)](https://goreportcard.com/report/github.com/Mahdyaralipor/gcraft)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
