@@ -28,12 +28,12 @@ type Method struct {
 
 // TypeInfo holds all extracted information about a parsed type.
 type TypeInfo struct {
-	Name       string
-	Package    string
-	IsStruct   bool
+	Name        string
+	Package     string
+	IsStruct    bool
 	IsInterface bool
-	Fields     []Field  // populated for structs
-	Methods    []Method // populated for interfaces
+	Fields      []Field  // populated for structs
+	Methods     []Method // populated for interfaces
 }
 
 // Parse reads a Go source file and extracts type information

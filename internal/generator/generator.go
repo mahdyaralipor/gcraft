@@ -119,7 +119,9 @@ func (b *{{ .Name }}Builder) Build() {{ .Name }} {
 func renderBuilder(ti *parser.TypeInfo) (string, error) {
 	tmpl := template.Must(template.New("builder").Funcs(funcMap).Parse(builderSrc))
 	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, ti); err != nil { return "", err }
+	if err := tmpl.Execute(&buf, ti); err != nil {
+		return "", err
+	}
 	return buf.String(), nil
 }
 
@@ -138,7 +140,9 @@ func (v {{ .Name }}) Validate() error {
 func renderValidator(ti *parser.TypeInfo) (string, error) {
 	tmpl := template.Must(template.New("validator").Funcs(funcMap).Parse(validatorSrc))
 	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, ti); err != nil { return "", err }
+	if err := tmpl.Execute(&buf, ti); err != nil {
+		return "", err
+	}
 	return buf.String(), nil
 }
 
@@ -159,7 +163,9 @@ func (v {{ .Name }}) Clone() {{ .Name }} {
 func renderClone(ti *parser.TypeInfo) (string, error) {
 	tmpl := template.Must(template.New("clone").Funcs(funcMap).Parse(cloneSrc))
 	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, ti); err != nil { return "", err }
+	if err := tmpl.Execute(&buf, ti); err != nil {
+		return "", err
+	}
 	return buf.String(), nil
 }
 
@@ -187,7 +193,9 @@ func (m *Mock{{ $.Name }}) {{ .Name }}({{ funcParams .Params }}) ({{ funcReturns
 func renderMock(ti *parser.TypeInfo) (string, error) {
 	tmpl := template.Must(template.New("mock").Funcs(funcMap).Parse(mockSrc))
 	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, ti); err != nil { return "", err }
+	if err := tmpl.Execute(&buf, ti); err != nil {
+		return "", err
+	}
 	return buf.String(), nil
 }
 

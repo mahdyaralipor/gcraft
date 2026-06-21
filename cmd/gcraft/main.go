@@ -47,12 +47,12 @@ func runGenerate(args []string) error {
 	}
 
 	typeName := fs.String("type", "", "type name to generate for (required)")
-	src      := fs.String("src", ".", "source file or directory")
-	out      := fs.String("out", "", "output file (default: <type>_gen.go in same dir as src)")
-	builder  := fs.Bool("builder", true, "generate Builder pattern")
-	mock     := fs.Bool("mock", true, "generate Mock (interfaces only)")
+	src := fs.String("src", ".", "source file or directory")
+	out := fs.String("out", "", "output file (default: <type>_gen.go in same dir as src)")
+	builder := fs.Bool("builder", true, "generate Builder pattern")
+	mock := fs.Bool("mock", true, "generate Mock (interfaces only)")
 	validate := fs.Bool("validate", true, "generate Validator")
-	clone    := fs.Bool("clone", true, "generate Clone method")
+	clone := fs.Bool("clone", true, "generate Clone method")
 
 	if err := fs.Parse(args); err != nil {
 		return err

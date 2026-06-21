@@ -101,8 +101,8 @@ func TestParse_StructWithTags(t *testing.T) {
 	src := writeTemp(t, `package myapp
 
 type Product struct {
-	ID   int    ` + "`json:\"id\"`" + `
-	Name string ` + "`json:\"name\" validate:\"required\"`" + `
+	ID   int    `+"`json:\"id\"`"+`
+	Name string `+"`json:\"name\" validate:\"required\"`"+`
 }
 `)
 	ti, err := parser.Parse(src, "Product")
