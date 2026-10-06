@@ -60,9 +60,17 @@ func Parse(src, typeName string) (*TypeInfo, error) {
 		if err != nil {
 			return nil, err
 		}
-		if ti != nil {
-			return ti, nil
+		if ti == nil {
+			continue
 		}
+		if ti.IsStruct {
+			for _, fld := range ti.Fields {
+				if !token.IsIdentifier(fld.Name) {
+					return nil, fmt.Errorf("type %q: embedded field %q is not supported yet", typeName, fld.Name)
+				}
+			}
+		}
+		return ti, nil
 	}
 
 	return nil, fmt.Errorf("type %q not found in %q", typeName, src)

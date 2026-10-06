@@ -178,6 +178,24 @@ func TestGenerate_Mock(t *testing.T) {
 	mustContain(t, out, "SaveFunc")
 }
 
+func TestGenerate_Mock_StructReturn(t *testing.T) {
+	ti := ifaceType("Store",
+		parser.Method{
+			Name:    "Get",
+			Params:  []parser.Field{field("id", "int")},
+			Returns: []parser.Field{field("arg0", "Settings")},
+		},
+	)
+
+	out, err := generator.Generate(ti, generator.Options{Mock: true})
+	if err != nil {
+		t.Fatalf("Generate: %v", err)
+	}
+
+	// a bare nil does not compile for struct returns
+	mustContain(t, out, "return *new(Settings)")
+}
+
 // ── All-in-one test ───────────────────────────────────────────────────────────
 
 func TestGenerate_AllOptions(t *testing.T) {

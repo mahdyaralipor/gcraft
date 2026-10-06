@@ -9,12 +9,14 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/Mahdyaralipor/gcraft/internal/generator"
 	"github.com/Mahdyaralipor/gcraft/internal/parser"
 )
 
-const version = "0.1.1"
+const version = "0.1.2"
 
 func main() {
 	if len(os.Args) < 2 {
@@ -103,35 +105,10 @@ func runGenerate(args []string) error {
 func resolveOutPath(src, typeName string) string {
 	info, err := os.Stat(src)
 	if err != nil || info.IsDir() {
-		return toLower(typeName) + "_gen.go"
+		return strings.ToLower(typeName) + "_gen.go"
 	}
 	// same directory as the source file
-	dir := dirOf(src)
-	if dir == "" {
-		dir = "."
-	}
-	return dir + "/" + toLower(typeName) + "_gen.go"
-}
-
-func dirOf(path string) string {
-	for i := len(path) - 1; i >= 0; i-- {
-		if path[i] == '/' || path[i] == '\\' {
-			return path[:i]
-		}
-	}
-	return ""
-}
-
-func toLower(s string) string {
-	b := make([]byte, len(s))
-	for i := range s {
-		c := s[i]
-		if c >= 'A' && c <= 'Z' {
-			c += 32
-		}
-		b[i] = c
-	}
-	return string(b)
+	return filepath.Join(filepath.Dir(src), strings.ToLower(typeName)+"_gen.go")
 }
 
 const generateUsage = `Usage: gcraft generate -type <TypeName> [flags]

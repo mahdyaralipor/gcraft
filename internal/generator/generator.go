@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"fmt"
 	"go/format"
+	"strings"
 	"text/template"
 
 	"github.com/Mahdyaralipor/gcraft/internal/parser"
@@ -209,7 +210,7 @@ func funcParams(fields []parser.Field) string {
 	for i, f := range fields {
 		parts[i] = f.Name + " " + f.Type
 	}
-	return join(parts, ", ")
+	return strings.Join(parts, ", ")
 }
 
 func funcReturns(fields []parser.Field) string {
@@ -217,7 +218,7 @@ func funcReturns(fields []parser.Field) string {
 	for i, f := range fields {
 		parts[i] = f.Type
 	}
-	return join(parts, ", ")
+	return strings.Join(parts, ", ")
 }
 
 func funcArgs(fields []parser.Field) string {
@@ -225,7 +226,7 @@ func funcArgs(fields []parser.Field) string {
 	for i, f := range fields {
 		parts[i] = f.Name
 	}
-	return join(parts, ", ")
+	return strings.Join(parts, ", ")
 }
 
 func zeroReturns(fields []parser.Field) string {
@@ -236,7 +237,7 @@ func zeroReturns(fields []parser.Field) string {
 	for i, f := range fields {
 		parts[i] = zeroValue(f.Type)
 	}
-	return "return " + join(parts, ", ")
+	return "return " + strings.Join(parts, ", ")
 }
 
 func zeroValue(t string) string {
@@ -252,17 +253,8 @@ func zeroValue(t string) string {
 		"float32", "float64":
 		return "0"
 	default:
-		return "nil"
+		// Named types (structs, etc.): *new(T) is the zero value and
+		// always compiles, unlike a bare nil.
+		return "*new(" + t + ")"
 	}
-}
-
-func join(parts []string, sep string) string {
-	out := ""
-	for i, p := range parts {
-		if i > 0 {
-			out += sep
-		}
-		out += p
-	}
-	return out
 }

@@ -164,3 +164,19 @@ func TestParse_InvalidPath(t *testing.T) {
 		t.Error("expected error for invalid path, got nil")
 	}
 }
+
+func TestParse_EmbeddedFieldRejected(t *testing.T) {
+	src := writeTemp(t, `package myapp
+
+type Base struct{ ID int }
+
+type User struct {
+	*Base
+	Name string
+}
+`)
+	_, err := parser.Parse(src, "User")
+	if err == nil {
+		t.Error("expected error for embedded field, got nil")
+	}
+}
